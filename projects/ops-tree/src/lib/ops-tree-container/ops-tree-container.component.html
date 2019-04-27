@@ -1,0 +1,24 @@
+
+<ng-container *ngIf="treeViewModels">
+  <div class="ops-tree-container">
+
+    <div class="ops-tree-member-left">
+      <div class="ops-tree-member-left-title">title</div>
+      <div class="ops-tree-member-left-panel">
+        <div class="ops-tree-member-left-context">
+
+          <ng-container *ngFor="let item of treeViewModels">
+            <ops-tree-view-item  [view_model]="item"></ops-tree-view-item>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="ops-tree-member-right">
+      <div class="ops-tree-member-right-title"></div>
+      <div class="ops-tree-member-right-panel"></div>
+    </div>
+  </div>
+</ng-container>
+

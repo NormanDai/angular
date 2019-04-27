@@ -1,0 +1,196 @@
+<ng-container *ngIf="treeViewModel">
+  <div class="ops-tree-member-left-item" >
+
+    <ng-container>
+      <div class="ops-tree-member-left-item-line">
+        <div class="ops-tree-member-left-item-icon"
+             (click)="switchExpendIcon()"
+             *ngIf="treeViewModel.options.expend ; else expendIcon">
+          <svg t="1556302848832" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+               xmlns="http://www.w3.org/2000/svg" p-id="1100" xmlns:xlink="http://www.w3.org/1999/xlink" width="16"
+               height="16">
+            <defs>
+              <style type="text/css">
+                svg {
+                  background-color: #FFFFFF;
+                }
+              </style>
+            </defs>
+            <path
+              d="M505.1648 687.1552c-8.6528 0-17.28-3.3024-23.8848-9.9072l-215.3728-215.3728a33.7664 33.7664 0 1 1 47.7696-47.7696l215.3728 215.3728a33.7664 33.7664 0 0 1-23.8848 57.6768z"
+              fill="#1296db" p-id="1101"></path>
+            <path
+              d="M512 688.5376a34.0992 34.0992 0 0 1-24.1408-58.2656l217.6-217.6a34.1248 34.1248 0 1 1 48.2816 48.256l-217.6 217.6c-6.656 6.656-15.4112 9.984-24.1408 9.984z m0-620.288c244.6592 0 443.7248 199.0912 443.7248 443.7504 0 244.6592-199.0656 443.7248-443.7248 443.7248-244.6592 0-443.7504-199.0656-443.7248-443.7248 0-244.6592 199.0656-443.7248 443.7248-443.7248zM512 0C229.2736 0 0 229.1968 0 512c0 282.7264 229.2736 512 512 512 282.8032 0 512-229.2736 512-512C1024 229.1968 794.8032 0 512 0z"
+              fill="#1296db" p-id="1102"></path>
+          </svg>
+        </div>
+      </div>
+
+      <ng-template #expendIcon>
+        <div class="ops-tree-member-left-item-icon"
+             (click)="switchExpendIcon()">
+          <svg t="1556304388309" class="icon" style="" viewBox="0 0 1027 1024" version="1.1"
+               xmlns="http://www.w3.org/2000/svg" p-id="6037" xmlns:xlink="http://www.w3.org/1999/xlink"
+               width="16.046875" height="16">
+            <defs>
+              <style type="text/css"></style>
+            </defs>
+            <path
+              d="M1024 509.751314C1024 792.545084 794.785578 1021.759506 511.995904 1021.759506 229.224662 1021.759506 0 792.545084 0 509.751314c0-282.769194 229.22466201-511.983616 511.995904-511.983616C794.785578-2.23230199 1024 226.98212 1024 509.751314L1024 509.751314zM63.98924801 509.751314C63.989248 757.172311 264.583099 957.75797 511.99590401 957.75797c247.42509301 0 448.000512-200.585659 448.00051199-448.006656 0-247.42918901-200.575419-448.006656-448.000512-448.00665599C264.583099 61.744658 63.989248 262.322125 63.98924801 509.751314L63.98924801 509.751314zM657.126263 481.616115c7.684035 7.68198701 10.080175 18.214766 8.312765 28.135199 1.76741 9.945008-0.628731 20.467548-8.312765 28.127007l-245.02076 245.002328c-12.511132 12.50294-32.73497 12.50294-45.246102 0-12.494748-12.47222-12.494748-32.75954601 0-45.262486L594.738538 509.75131401l-227.881185-227.85251301c-12.494748-12.517276-12.494748-32.782074 0-45.315733 12.511132-12.4415 32.73497-12.4415 45.246102 0L657.126263 481.616115 657.126263 481.616115z"
+              p-id="6038" fill="#1296db"></path>
+          </svg>
+        </div>
+      </ng-template>
+
+    </ng-container>
+
+    <div class="ops-tree-member-left-item-parent" (click)="switchShowActionToolbar()">
+      <ng-container>
+        <div class="ops-tree-member-left-item-element-box" *ngIf="!treeViewModel.options.edit; else inputModel">
+          <div class="ops-tree-member-left-item-element-context">
+            {{treeViewModel.name}}
+          </div>
+        </div>
+        <ng-template #inputModel>
+          <div class="ops-tree-member-left-item-element-box" style="border: none">
+            <input
+              class="ops-tree-member-left-item-element-input"
+              style="color: crimson; border-style: dashed; border-radius: 5px; border-width: 1px"
+              [(ngModel)]="treeViewModel.name" >
+          </div>
+        </ng-template>
+
+        <ng-container *ngIf="treeViewModel.options.showActionToolbar">
+          <div class="ops-tree-member-left-item-action-box" style="" *ngIf="!treeViewModel.options.edit; else inputModel">
+
+            <div class="ops-tree-member-left-item-action-new" (click)="showAddChildBar()">
+              <svg t="1556378005204" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3621" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M477.866667 750.933333V546.133333h477.866666v477.866667H477.866667v-204.8H204.8V273.066667H0V136.533333h546.133333V0h477.866667v477.866667H546.133333V273.066667H273.066667v477.866666h204.8z m68.266666-136.533333v341.333333h341.333334V614.4H546.133333z" fill="#0171B7" p-id="3622"></path></svg>
+            </div>
+            <div class="ops-tree-member-left-item-action-update" (click)="switchEditModel()">
+              <svg t="1556378114798" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4412" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M874.773755 273.694012l-170.659841-168.526592 85.32992-84.220631a73.042412 73.042412 0 0 1 102.395905 0l68.263936 67.410637a70.823834 70.823834 0 0 1 0 101.115955l-85.32992 84.220631zM389.673159 741.557964L221.402556 576.871218l457.453702-444.398224 168.355932 164.686746L389.673159 741.557964zM87.349251 891.567964l101.969255-273.653054L355.54119 785.076224l-268.191939 106.6624z m752.865886 44.200899c23.636388 0 42.66496 19.711212 42.66496 44.115568a43.432929 43.432929 0 0 1-42.66496 44.115569H85.301333a43.432929 43.432929 0 0 1-42.66496-44.115569c0-24.404357 19.113902-44.115569 42.66496-44.115568h754.913804z" fill="#13227a" p-id="4413"></path></svg>
+            </div>
+            <div class="ops-tree-member-left-item-action-delete">
+              <svg t="1556378188371" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4869" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M819.2 175.104H204.8c-17.066667 0-28.444444-11.377778-28.444444-28.444444s11.377778-28.444444 28.444444-28.444445h614.4c17.066667 0 28.444444 11.377778 28.444444 28.444445s-11.377778 28.444444-28.444444 28.444444z" fill="#d81e06" p-id="4870"></path><path d="M620.088889 129.592889H364.088889c-17.066667 0-28.444444-11.377778-28.444445-28.444445s11.377778-28.444444 28.444445-28.444444H625.777778c17.066667 0 28.444444 11.377778 28.444444 28.444444s-17.066667 28.444444-34.133333 28.444445z" fill="#d81e06" p-id="4871"></path><path d="M676.977778 950.044444H347.022222c-68.266667 0-119.466667-56.888889-119.466666-125.155555V261.688889c0-17.066667 11.377778-28.444444 28.444444-28.444445h517.688889c17.066667 0 28.444444 11.377778 28.444444 28.444445v557.511111c0 73.955556-56.888889 130.844444-125.155555 130.844444zM284.444444 290.133333v529.066667c0 39.822222 28.444444 68.266667 62.577778 68.266667h329.955556c34.133333 0 62.577778-28.444444 62.577778-68.266667V290.133333H284.444444z" fill="#d81e06" p-id="4872"></path><path d="M440.888889 799.118222c-17.066667 0-28.444444-11.377778-28.444445-28.444444v-375.466667c0-17.066667 11.377778-28.444444 28.444445-28.444444s28.444444 11.377778 28.444444 28.444444v375.466667c0 11.377778-11.377778 28.444444-28.444444 28.444444zM594.488889 799.118222c-17.066667 0-28.444444-11.377778-28.444445-28.444444v-375.466667c0-17.066667 11.377778-28.444444 28.444445-28.444444s28.444444 11.377778 28.444444 28.444444v375.466667c0 11.377778-11.377778 28.444444-28.444444 28.444444z" fill="#d81e06" p-id="4873"></path></svg>
+            </div>
+
+
+          </div>
+
+          <ng-template #inputModel>
+            <div class="ops-tree-member-left-item-action-box">
+
+              <div class="ops-tree-member-left-item-action-new-confirm" (click)="confirmEditResult()">
+                <svg t="1556378785473" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="1100" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     width="18" height="18">
+                  <defs>
+                    <style type="text/css"></style>
+                  </defs>
+                  <path d="M921.6 143.36L389.12 670.72 102.4 389.12 0 496.64l389.12 384L1024 245.76l-102.4-102.4z"
+                        p-id="1101" fill="#1296db"></path>
+                </svg>
+              </div>
+              <div class="ops-tree-member-left-item-action-update-cancel" (click)="switchEditModel()">
+                <svg t="1556378817409" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="1962" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     width="18" height="18">
+                  <defs>
+                    <style type="text/css"></style>
+                  </defs>
+                  <path
+                    d="M977.28 834.08L655.04 512l322.24-322.08a50.88 50.88 0 0 0 0-71.52l-71.52-71.68a50.88 50.88 0 0 0-71.68 0L512 368.8 189.92 46.72a50.72 50.72 0 0 0-71.52 0L46.72 118.24a50.72 50.72 0 0 0 0 71.52L368.8 512 46.72 834.08a50.72 50.72 0 0 0 0 71.68l71.68 71.52a50.72 50.72 0 0 0 71.52 0L512 655.2l322.08 322.08a50.88 50.88 0 0 0 71.68 0l71.52-71.52a51.04 51.04 0 0 0 0-71.68z"
+                    fill="#d81e06" p-id="1963"></path>
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </div>
+
+
+    <div class="ops-tree-member-left-item-child" *ngIf="treeViewModel.options.expend">
+
+
+      <ng-container *ngIf="treeViewModel.options.showAddChildToobar">
+        <div class="ops-tree-member-left-item">
+
+          <ng-container>
+            <div class="ops-tree-member-left-item-line">
+              <div class="ops-tree-member-left-item-icon" >
+                <svg t="1556302848832" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="1100" xmlns:xlink="http://www.w3.org/1999/xlink" width="16"
+                     height="16">
+                  <defs>
+                    <style type="text/css">
+                      svg {
+                        background-color: #FFFFFF;
+                      }
+                    </style>
+                  </defs>
+                  <path
+                    d="M505.1648 687.1552c-8.6528 0-17.28-3.3024-23.8848-9.9072l-215.3728-215.3728a33.7664 33.7664 0 1 1 47.7696-47.7696l215.3728 215.3728a33.7664 33.7664 0 0 1-23.8848 57.6768z"
+                    fill="#1296db" p-id="1101"></path>
+                  <path
+                    d="M512 688.5376a34.0992 34.0992 0 0 1-24.1408-58.2656l217.6-217.6a34.1248 34.1248 0 1 1 48.2816 48.256l-217.6 217.6c-6.656 6.656-15.4112 9.984-24.1408 9.984z m0-620.288c244.6592 0 443.7248 199.0912 443.7248 443.7504 0 244.6592-199.0656 443.7248-443.7248 443.7248-244.6592 0-443.7504-199.0656-443.7248-443.7248 0-244.6592 199.0656-443.7248 443.7248-443.7248zM512 0C229.2736 0 0 229.1968 0 512c0 282.7264 229.2736 512 512 512 282.8032 0 512-229.2736 512-512C1024 229.1968 794.8032 0 512 0z"
+                    fill="#1296db" p-id="1102"></path>
+                </svg>
+              </div>
+            </div>
+
+
+          </ng-container>
+
+          <div class="ops-tree-member-left-item-parent">
+            <ng-container>
+
+              <div class="ops-tree-member-left-item-element-box" style="border: none">
+                <input class="ops-tree-member-left-item-element-input"
+                       style="color: crimson; border-style: dashed; border-radius: 5px; border-width: 1px"
+                       placeholder="点击此处添加新节点"
+                       [(ngModel)]="newChildName">
+              </div>
+
+
+              <ng-container>
+
+
+                <div class="ops-tree-member-left-item-action-box">
+
+                  <div class="ops-tree-member-left-item-action-new-confirm" (click)="confirmAddChild()">
+                    <svg t="1556378785473" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="1100" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="18" height="18">
+                      <defs>
+                        <style type="text/css"></style>
+                      </defs>
+                      <path d="M921.6 143.36L389.12 670.72 102.4 389.12 0 496.64l389.12 384L1024 245.76l-102.4-102.4z"
+                            p-id="1101" fill="#1296db"></path>
+                    </svg>
+                  </div>
+                  <div class="ops-tree-member-left-item-action-update-cancel" (click)="cancelAddChild()">
+                    <svg t="1556378817409" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="1962" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="18" height="18">
+                      <defs>
+                        <style type="text/css"></style>
+                      </defs>
+                      <path
+                        d="M977.28 834.08L655.04 512l322.24-322.08a50.88 50.88 0 0 0 0-71.52l-71.52-71.68a50.88 50.88 0 0 0-71.68 0L512 368.8 189.92 46.72a50.72 50.72 0 0 0-71.52 0L46.72 118.24a50.72 50.72 0 0 0 0 71.52L368.8 512 46.72 834.08a50.72 50.72 0 0 0 0 71.68l71.68 71.52a50.72 50.72 0 0 0 71.52 0L512 655.2l322.08 322.08a50.88 50.88 0 0 0 71.68 0l71.52-71.52a51.04 51.04 0 0 0 0-71.68z"
+                        fill="#d81e06" p-id="1963"></path>
+                    </svg>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngFor="let item of treeViewModel.children">
+        <ops-tree-view-item [view_model]="item"></ops-tree-view-item>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
